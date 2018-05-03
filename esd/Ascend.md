@@ -3,15 +3,18 @@
         AREA LIST, DATA, READONLY
         DCD 0x0000008F, 0x00000012, 0x00000024, 0x00000023, 0x00000011
         ALIGN	
+        
 This is where you initialise the array to be sorted. The list can be accessed as `[LIST]`
 
         AREA DST, DATA, READWRITE
     SPACE 10
     LEN EQU 05
+    
 This is where you create space to store the sorted array.
 You're also creating a constant `LEN` which will have the value `05`.
 
 The main code starts here:
+
         AREA PROGRAM, CODE, READONLY
         ENTRY
         export start 
@@ -21,15 +24,19 @@ The main code starts here:
 You store the length of the list in R0
         
         LDR R5,=LIST
+        
 You store the **memory location/address** of the list of unsorted numbers in `R5`. Source
         
         LDR R6,=DST
+        
 You store the **memory location/address** of the list of sorted numbers in `R6`. Destination
     
     UP  LDR R1,[R5]
+    
 Loading the **number at address** `R5` into `R1` register
         
         STR R1,[R6]
+        
 Storing the number in `R1` register **at address stored in** `R6` register
         
         ADD R5,#04
