@@ -93,26 +93,56 @@ Change this line to `CMP R3,R2` for Descending order
         
         BLE DN
         
-If the value in `R2` is less than the `R3` (for ascending), it will just branch/jump to `DN` label
+If the value in `R2` is less than the value in `R3` (for ascending), it will just branch/jump to `DN` label
 Basically, it won't swap the two numbers.
 
 
-If the value in `R3` is less than the `R2` (for descending), it will just branch/jump to `DN` label
+If the value in `R3` is less than the value in `R2` (for descending), it will just branch/jump to `DN` label
 Basically, it won't swap the two numbers.
 
+
+If the value in `R2` is not less than the value in `R3` (for ascending), it will swap the numbers by: 
 
         STR R2,[R6]
         SUB R6,#4
         STR R3,[R6]
         ADD R6,#4
+    
+`STR R2,[R6]` will store the first value in the **address of the second number in the list** 
+`SUB R6,#4` will subtract `R6` by 4 and go back to the **address of the first number in the list**
+`STR R3,[R6]` will store the second number in the **address of the first number in the list**
+Because of `SUB R6,#4` we went to the location of the first number. We need to come back to the location of the second number.
+So, `ADD R6,#4` will add 4 to `R6` and bring it back to the second number.
+
+    
+    
     DN  SUB R1,#01
+        
+If we did not have to swap, we would've directly jumped to this statement. Here, we subtract `R1` which is the counter for the inner loop.  
+        
         CMP R1,#00
         BLE DN1
+
+We compare `R1` to `0`. If it is equal to 0, you exit the inner loop and jump to the outer loop where you subtract 1 from `R0` which is the counter of the outer loop.
+        
         B TOP
+
+If the counter `R1` is not equal to 0, you go back to the starting of the inner loop and compare the next two numbers. The next time, it will compare the second and third number. After that, the third and the fouth.. And so on.
+    
+    
     DN1 SUB R0,#1
+        
+This is after we exit the inner loop. We subtract 1 from the `R0` register, which is the counter for the outer loop.
+        
         CMP R0,#00
         BLE DN2
+        
+We compare `R0` to `0`. If it is equal to 0, you exit the outer loop and jump to the `DN2` which is the stop.
+        
         B TOP2
+    
+If `R0` is greater than 0, you go back to the starting of the outer loop.
+    
     DN2 B DN2
         END
 
