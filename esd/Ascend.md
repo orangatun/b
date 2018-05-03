@@ -1,4 +1,4 @@
-## ALP for sorting of an 32 bit numbers in ascending order
+## ALP for sorting of a list of 32 bit numbers in ascending order
 
         AREA LIST, DATA, READONLY
         DCD 0x0000008F, 0x00000012, 0x00000024, 0x00000023, 0x00000011
