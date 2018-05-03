@@ -131,7 +131,7 @@ You compare `R1` to `0`. If it is equal to 0, you exit the inner loop and jump t
         
         B TOP
 
-If the counter `R1` is not equal to 0, you go back to the starting of the inner loop and compare the next two numbers. The next time, it will compare the second and third number. After that, the third and the fouth.. And so on.
+If the counter `R1` is not equal to 0, you go back to the starting of the inner loop and compare the next two numbers. The next time, it will compare the second and third number. After that, the third and the fourth. Finally, the fourth and the fifth.
     
     
     DN1 SUB R0,#1
