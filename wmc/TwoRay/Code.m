@@ -1,5 +1,5 @@
 
-    clear al;
+    clear all;
     close all;
     lambda = 0.3; 
     ht100=100;
