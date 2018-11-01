@@ -1,8 +1,6 @@
   #include<stdio.h>
-  #include<string.h>
+  //#include<string.h>
   #include<stdlib.h> //Used for exit(0);
-  #include<time.h>
-
   //Structure Definitions
   struct book {
     int id;
@@ -20,7 +18,7 @@
     int bkID,studentID;
     struct timeVal issued;
     //char studentName[20];
-  }usr;
+  }student;
 
   //Function Declarations
   int getch(void);
@@ -66,7 +64,10 @@
       case 7: displayIssueList(); break;
 
       case 8: {
-        printf("\n\nLibrary Management System - O\n");
+        printf("\n\nLibrary Management System - MiniProject - O\n");
+        //printf(" O \n");
+        //printf("\t\t");
+        //printf("\n");
         exit(0);
       }break;
       default: printf("Wrong Entry!\nTry Again!\n\n");
@@ -182,26 +183,26 @@
   void issueBook(void) {
     printf("\t\t\tISSUE BOOK\t\t\t\n"); //Issue a Book
     printf("\n Enter book ID: ");
-    scanf("%d",&usr.bkID);
-    if(checkBookExist(usr.bkID)==0) { //Book doesn't exist
-      printf("Book #%d doesn't exist\n",usr.bkID);
+    scanf("%d",&student.bkID);
+    if(checkBookExist(student.bkID)==0) { //Book doesn't exist
+      printf("Book #%d doesn't exist\n",student.bkID);
       return;
     }
-    else if(checkBookIssued(usr.bkID)==1) {
-      printf("Book #%d already Issued\n",usr.bkID);
+    else if(checkBookIssued(student.bkID)==1) {
+      printf("Book #%d already Issued\n",student.bkID);
       return;
     }
     printf("Book is available for issue\n\n");
     printf(" Enter student ID: ");
-    scanf("%d",&usr.studentID);
+    scanf("%d",&student.studentID);
     printf(" Enter borrow date (dd/mm/yyyy): ");
-    scanf("%d/%d/%d",&usr.issued.dd,&usr.issued.mm,&usr.issued.yyyy);
+    scanf("%d/%d/%d",&student.issued.dd,&student.issued.mm,&student.issued.yyyy);
     fbk=fopen("LMS-issue.dat","ab+");
     fseek(fbk,0,SEEK_END);
-    fwrite(&usr,sizeof(usr),1,fbk);
+    fwrite(&student,sizeof(student),1,fbk);
     fclose(fbk);
     printf("\nBook is Issued!\n\n");
-    //printf("Return date is: %d/%d/%d",usr.issued.dd
+    //printf("Return date is: %d/%d/%d",student.issued.dd
 
   }
 
@@ -224,10 +225,10 @@
       fseek(fbkt,0,SEEK_SET);
       fseek(fbk,0,SEEK_SET);
       printf("\nHere\n");
-      while(fread(&usr,sizeof(usr),1,fbk)>0) {
-        if(usr.bkID!=idReturn) {
+      while(fread(&student,sizeof(student),1,fbk)>0) {
+        if(student.bkID!=idReturn) {
           fseek(ft,0,SEEK_END);
-          fwrite(&usr,sizeof(usr),1,fbkt);
+          fwrite(&student,sizeof(student),1,fbkt);
         }
       }
       fclose(fbkt);
@@ -264,10 +265,10 @@
     int j=0;
     fbk=fopen("LMS-issue.dat","rb");
     rewind(fbk);
-    while(fread(&usr,sizeof(usr),1,fbk)==1) {
-      printf("    %d\t\t",usr.bkID);
-      printf("%d\t",usr.studentID);
-      printf("      %d/%d/%d\n",usr.issued.dd,usr.issued.mm,usr.issued.yyyy);
+    while(fread(&student,sizeof(student),1,fbk)==1) {
+      printf("    %d\t\t",student.bkID);
+      printf("%d\t",student.studentID);
+      printf("      %d/%d/%d\n",student.issued.dd,student.issued.mm,student.issued.yyyy);
       j++;
     }
     printf("\nTotal Books Issued: %d\n\n",j);
