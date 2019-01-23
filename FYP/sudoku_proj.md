@@ -1,4 +1,4 @@
-# Sudoku board.
+# Sudoku board
 
 ## Introduction 
 
@@ -10,11 +10,6 @@ A solution for a geometric problem can be found out more easily when the scale o
 
 * NodeMCU microcontroller
 * Seven segment displays
-
-[//] # ( * 3 motors for linear actuation (Stepper Motors))
-
-[//] # ( * Motor Drivers)
-
 * Capacitive sensor
 
 ## Working
@@ -26,4 +21,4 @@ The microcontroller senses the input from the user through the capacitive sensor
 Based on the current positions of the numbers, the microcontroller determines if the placement of a particular number is valid. If the position is not valid, it blinks the RED LED indicating invalid move.
 If the position is valid, it turns on the GREEN LED for 2 seconds. (This can be disabled)
 
-At the end of the game, if played correctly, the GREEN LED blinks for a period of 10 seconds, indicating successful completionkkkkk
+At the end of the game, if played correctly, the GREEN LED blinks for a period of 10 seconds, indicating successful completion
