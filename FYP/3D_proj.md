@@ -12,7 +12,7 @@
 
 Everything listed so far is a product or a Do-It-Yourself tutorial.
 
-The next two links are open-source projects related to 3D printing..
+The next few links are open-source projects related to 3D printing..
 
 [Link 1](https://total3dprinting.org/top-5-best-open-source-3d-printers-for-2017/)
 
